@@ -23,7 +23,7 @@ public class Main {
            if (expression_array.length > 3) {
                throw new Exception();
            }
-           Map<String, Integer> hashMap = new HashMap<String, Integer>();
+           Map<String, Integer> hashMap = new HashMap<>();
            String[] roman = {"I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX", "X", "XI", "XII", "XIII", "XIV", "XV",
                    "XVI", "XVII", "XVIII", "XIX", "XX"};
 
@@ -31,8 +31,8 @@ public class Main {
                hashMap.put(roman[i], i + 1);
            }
 
-           //System.out.println(hashMap);
-           String whatAreNumbers = "";
+
+           String whatAreNumbers;
 
            if (expression_array[0].matches("[-+]?\\d+") && expression_array[2].matches("[-+]?\\d+")) {
                whatAreNumbers = "arabic";
