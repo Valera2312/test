@@ -9,7 +9,7 @@ public class Main {
 
 
 
-    public static void main(String[] args) throws Exception {
+    public static void main(String[] args) {
 
        while(true) {
 
@@ -20,18 +20,25 @@ public class Main {
                break;
            }
            String[] expression_array = expression.split(" ");
-           if (expression_array.length > 3) {
-               throw new Exception();
+           try {
+               if (expression_array.length > 3) {
+                   throw new Exception();
+               }
+           } catch (Exception e){
+               System.out.println("Expression isn't correct");
+               break;
            }
+
            Map<String, Integer> hashMap = new HashMap<>();
-           String[] roman = {"I","II","III","IV","V","VI","VII","VIII","IX", "X", "XI","XII","XIII","XIV","XV",
-                   "XVI", "XVII", "XVIII", "XIX", "XX","XXI","XXII","XXIII","XXIV","XXV","XXVI","XXVII","XXVIII","XXIX",
-                   "XXX","XXXI","XXXII","XXXIII","XXXIV",
-                   "XLI","XLII","XLIII","XLIV","XLV","XLVI","XLVII","XLVIII",
-                   "XLIX","L","LI","LII","LIII","LIV","LV","LVI","LVII","LVIII","LIX","LX","LXI","LXII","LXIII",
-                   "LXIV","	LXV","LXVI","LXVII","LXVIII","LXIX","LXX","LXXI","LXXII","LXXIII","LXXIV","LXXV","LXXVI",
-                   "LXXVII","LXXVIII","LXXIX","LXXX","LXXXI","LXXXII","LXXXIII","LXXXIV","LXXXV","LXXXVI","LXXXVII",
-                   "LXXXVIII","	LXXXIX","XC","XCI","XCII","XCIII","XCIV","XCV","XCVI","	XCVII","XCVIII","XCIX","C"};
+           String[] roman = {
+                   "I","II","III","IV","V","VI","VII","VIII","IX","X","XI","XII","XIII","XIV","XV","XVI","XVII","XVIII","XIX",
+                   "XX","XXI","XXII","XXIII","XXIV","XXV","XXVI","XXVII","XXVIII","XXIX","XXX","XXXI","XXXII","XXXIII","XXXIV",
+                   "XXXV","XXXVI","XXXVII","XXXVIII","XXXIX","XL","XLI","XLII","XLIII","XLIV","XLV","XLVI","XLVII","XLVIII","XLIX",
+                   "L","LI","LII","LIII","LIV","LV","LVI","LVII","LVIII","LIX","LX","LXI","LXII","LXIII","LXIV","LXV","LXVI","LXVII","LXVIII",
+                   "LXIX","LXX","LXXI","LXXII","LXXIII","LXXIV","LXXV","LXXVI","LXXVII","LXXVIII",
+                   "LXXIX","LXXX","LXXXI","LXXXII","LXXXIII","LXXXIV","LXXXV","LXXXVI","LXXXVII","LXXXVIII","LXXXIX","XC",
+                   "XCI","XCII","XCIII","XCIV","XCV","XCVI","XCVII","XCVIII","XCIX","C"
+           };
 
            for (int i = 0; i <= 99; i++) {
                hashMap.put(roman[i], i + 1);
@@ -40,15 +47,21 @@ public class Main {
 
            String whatAreNumbers;
 
-           if (expression_array[0].matches("[-+]?\\d+") && expression_array[2].matches("[-+]?\\d+")) {
-               whatAreNumbers = "arabic";
+           try{
+               if (expression_array[0].matches("[-+]?\\d+") && expression_array[2].matches("[-+]?\\d+")) {
+                   whatAreNumbers = "arabic";
 
-           } else if (expression_array[0].matches("[IVXLCDM]+") && expression_array[2].matches("[IVXLCDM]+")) {
-               whatAreNumbers = "roman";
+               } else if (expression_array[0].matches("[IVXLCDM]+") && expression_array[2].matches("[IVXLCDM]+")) {
+                   whatAreNumbers = "roman";
 
-           } else {
-               throw new Exception();
+               } else {
+                   throw new Exception();
+               }
+           } catch (Exception e){
+               System.out.println("Expression isn't correct");
+               break;
            }
+
 
            int number_one = 0;
            int number_two = 0;
@@ -91,7 +104,7 @@ public class Main {
                        number_roman = hashMap.get(expression_array[0]) * hashMap.get(expression_array[2]);
                        System.out.println(getRomanKey(number_roman, hashMap));
                    } else {
-                       System.out.println(number_one + number_two);
+                       System.out.println(number_one * number_two);
                    }
                    break;
            }
