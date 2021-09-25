@@ -30,7 +30,7 @@ public class Main {
            }
 
            Map<String, Integer> hashMap = new HashMap<>();
-           String[] roman = {
+           String[] roman = { "null",
                    "I","II","III","IV","V","VI","VII","VIII","IX","X","XI","XII","XIII","XIV","XV","XVI","XVII","XVIII","XIX",
                    "XX","XXI","XXII","XXIII","XXIV","XXV","XXVI","XXVII","XXVIII","XXIX","XXX","XXXI","XXXII","XXXIII","XXXIV",
                    "XXXV","XXXVI","XXXVII","XXXVIII","XXXIX","XL","XLI","XLII","XLIII","XLIV","XLV","XLVI","XLVII","XLVIII","XLIX",
@@ -40,8 +40,8 @@ public class Main {
                    "XCI","XCII","XCIII","XCIV","XCV","XCVI","XCVII","XCVIII","XCIX","C"
            };
 
-           for (int i = 0; i <= 99; i++) {
-               hashMap.put(roman[i], i + 1);
+           for (int i = 1; i <= 100; i++) {
+               hashMap.put(roman[i], i);
            }
 
 
